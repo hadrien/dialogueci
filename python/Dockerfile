@@ -15,4 +15,4 @@ RUN cd bin && \
     sudo unzip tf.zip -d /bin &&\
     sudo rm tf.zip
 
-RUN sudo pip install awscli menhir
+RUN sudo pip install awscli menhir pipenv
