@@ -7,12 +7,8 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && \
     sudo npm install -g serverless && \
     sudo npm install -g yarn
 
-# ENV TF_VERSION=0.9.5
-# ENV TF_URL=https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip
-
-# RUN cd bin && \
-#     sudo curl ${TF_URL} -o tf.zip && \
-#     sudo unzip tf.zip -d /bin &&\
-#     sudo rm tf.zip
-
 RUN sudo pip install awscli
+
+RUN sudo sed -i -e 's/# en_CA.UTF-8 UTF-8/en_CA.UTF-8 UTF-8/' /etc/locale.gen && \
+    sudo sed -i -e 's/# fr_CA.UTF-8 UTF-8/fr_CA.UTF-8 UTF-8/' /etc/locale.gen && \
+    sudo dpkg-reconfigure --frontend=noninteractive locales
